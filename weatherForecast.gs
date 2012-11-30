@@ -1,7 +1,10 @@
 function createWeatherReport() {
-  // current report for ZIP = 94703
-  var address = "94703";
-  
+  // current report for desired zip code,
+  // sent to your phone via MMS
+
+  var address = "your Zip Code";
+  var MMSAddress = "your phone's MMS Address";
+
   var currentTime = new Date();
   
   var response = UrlFetchApp.fetch("http://api.wunderground.com/api/d62da0c914d13240/forecast/hourly/q/" + address + ".json");
@@ -17,7 +20,7 @@ function createWeatherReport() {
  
   var todaysForecast = "currently:" + reelFeel + "C, \n high:" + todaysHigh + "C, \n low:" + todaysLow + "C, \n daytimePOP:" + todaysPOP + "%, \n nightPOP:" + tonightsPOP + "%"; 
   
-  GmailApp.sendEmail("12246192802@smtext.com", currentTime, todaysForecast); 
+  GmailApp.sendEmail(MMSAddress, currentTime, todaysForecast); 
   
 }
 
